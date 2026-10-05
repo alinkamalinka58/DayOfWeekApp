@@ -97,9 +97,18 @@ fun AverageScreen() {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Кнопка (пока ничего не делает)
         Button(onClick = {
+            val a = numberA.trim().toDoubleOrNull()
+            val b = numberB.trim().toDoubleOrNull()
+            val c = numberC.trim().toDoubleOrNull()
 
+            result = if (a == null || b == null || c == null) {
+                "Ошибка: введите все три числа!"
+            } else if (symbol.isBlank()) {
+                "Ошибка: введите символ 'a' или 'g'!"
+            } else {
+                calculateAverage(a, b, c, symbol.trim())
+            }
         }) {
             Text("Вычислить")
         }
