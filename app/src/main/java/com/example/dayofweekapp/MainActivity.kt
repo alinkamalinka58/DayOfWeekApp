@@ -113,3 +113,16 @@ fun AverageScreen() {
         )
     }
 }
+fun calculateAverage(a: Double, b: Double, c: Double, symbol: String): String {
+    return when (symbol.lowercase()) {
+        "a" -> {
+            val avg = (a + b + c) / 3.0
+            "Среднее арифметическое: $avg"
+        }
+        "g" -> {
+            val geo = Math.cbrt(a * b * c)
+            "Среднее геометрическое: $geo"
+        }
+        else -> "Ошибка: символ должен быть 'a' или 'g'"
+    }
+}
