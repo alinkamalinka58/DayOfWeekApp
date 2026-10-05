@@ -56,7 +56,11 @@ fun AverageScreen() {
         // Поле 1
         OutlinedTextField(
             value = numberA,
-            onValueChange = { numberA = it },
+            onValueChange = { newValue ->
+                if (newValue.all { it.isDigit() || it == '.' || it == '-' }) {
+                    numberA = newValue
+                }
+            },
             label = { Text("Первое число") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
@@ -67,7 +71,11 @@ fun AverageScreen() {
         // Поле 2
         OutlinedTextField(
             value = numberB,
-            onValueChange = { numberB = it },
+            onValueChange = { newValue ->
+                if (newValue.all { it.isDigit() || it == '.' || it == '-' }) {
+                    numberB = newValue
+                }
+            },
             label = { Text("Второе число") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
@@ -78,7 +86,11 @@ fun AverageScreen() {
         // Поле 3
         OutlinedTextField(
             value = numberC,
-            onValueChange = { numberC = it },
+            onValueChange = { newValue ->
+                if (newValue.all { it.isDigit() || it == '.' || it == '-' }) {
+                    numberC = newValue
+                }
+            },
             label = { Text("Третье число") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
@@ -89,7 +101,12 @@ fun AverageScreen() {
         // Поле для символа
         OutlinedTextField(
             value = symbol,
-            onValueChange = { symbol = it },
+            onValueChange = { newValue ->
+                val lower = newValue.lowercase()
+                if (lower.length <= 1 && (lower == "a" || lower == "g" || lower.isEmpty())) {
+                    symbol = newValue
+                }
+            },
             label = { Text("Символ (a или g)") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
